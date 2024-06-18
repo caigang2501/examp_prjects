@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">主页名称</div>
+        <nav>
+            <a href="#">首页</a>
+            <a href="#">产品</a>
+            <a href="#">文档</a>
+            <a href="#">关于</a>
+            <a href="{% url 'aw_kedro:register' %}">注册</a>
+            <a href="#">登陆</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>欢迎来到主页</h1>
+        <p>这里是正文内容。</p>
+    </main>
+
+    <footer>
+        <p>页脚内容</p>
+    </footer>
+</body>
+</html>

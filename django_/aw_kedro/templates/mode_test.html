@@ -1,0 +1,114 @@
+<style>
+    .container {
+        display: flex;
+    }
+
+    .form-container {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .list-container {
+        flex: 1;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        max-height: 650; /* 设置最大高度，超过则显示滚动条 */
+    }
+
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    textarea {
+        display: block;
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+
+    listtextarea {
+        display: block;
+        width: 98%;
+        height: auto;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+
+    input[type="text"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+
+    .list-item {
+        margin-bottom: 10px;
+    }
+    
+</style>
+
+<div class="container">
+    <div class="form-container">
+        <form action="{% url 'aw_kedro:st_test' %}" method="POST">
+            {% csrf_token %}
+            <label for="input_text_id">请输入测试文本:</label>
+            <textarea id="input_text_id" name="input_text_name">{{ input_text }}</textarea>
+
+            <label for="emotion_rating_id">情绪分数:(范围:0-1,低分代表消极,高分代表积极)</label>
+            <input type="text" id="emotion_rating_id" name="emotion_rating_name" value="{{ emotion_rating }}" readonly />
+
+            <input type="submit" value="提交" />
+        </form>
+    </div>
+    <div class="list-container">
+        <h3>历史记录:</h3>
+        <div class="list-item">
+            {% for submit in submit_list %}
+            <listtextarea>{{ submit.text }}</listtextarea>
+            <p>&nbsp;&nbsp;情绪分数:{{ submit.rating }}&nbsp;&nbsp;&nbsp;&nbsp; 时间:{{submit.time}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>

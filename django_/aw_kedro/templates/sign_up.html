@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+
+{% block title %}关于我们 - 红领巾{% endblock %}
+
+{% block content %}
+<title>sb</title> 
+</head>
+<body>
+    <h2>表单</h2>
+
+    <form action="/" method="post">
+        <!-- 文本输入框 -->
+        <label for="name">用户名:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <!-- 密码输入框 -->
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" required="True">
+        <br>
+
+        <!-- 单选按钮 -->
+        <label>性别:</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">女</label>
+        <br>
+
+        <label for="name">邮箱:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label for="country">国家:</label>
+        <select id="country" name="country">
+            <option value="cn">CN</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+        </select><br>
+
+        <label for="country">安全问题:</label>
+        <select id="country" name="country">
+            <option value="cn">我出生的城市</option>
+            <option value="usa">我最爱的宠物的名字</option>
+            <option value="uk">我的小学校名</option>
+        </select><br>
+
+        <label for="name">安全问题答案:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <input type="checkbox" id="subscribe" name="subscribe" checked>
+        <label for="subscribe">订阅推送信息</label>
+        <br>
+        
+        <input type="submit" value="提交">
+    </form>
+
+</body>
+{% endblock %}
